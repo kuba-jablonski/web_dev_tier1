@@ -1,0 +1,10 @@
+.aboutme {
+    width: 100%;
+    background: $grey;
+    color: $white;
+    position: relative;
+
+    &__text {
+        padding: 1rem;
+    }
+}
