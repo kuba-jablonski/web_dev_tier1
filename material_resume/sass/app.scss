@@ -71,7 +71,74 @@ img {
 .aboutme {
     @include header-padding;
     background: $grey;
-    color: $white;
     padding-top: 2rem;
     padding-bottom: 2rem;
+    color: $white;
+}
+
+//***************************
+//      MAIN                *
+//***************************
+
+.left-column {
+    padding: 0 2rem 2rem 4rem;
+    background: $white;
+    border-right: 1px dashed black;
+    progress {
+        float: right;
+    }
+}
+
+.right-column {
+    padding: 2rem 4rem 2rem 2rem;
+    background: $silver;
+}
+
+//**************************
+//      LEFT               *
+//**************************
+
+td {
+    position: relative;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-right: 2rem;
+    border-bottom: 1px solid $grey;
+    width: 100%;
+    &:first-child {
+        font-weight: bold;
+    }
+    &:nth-child(2) {
+        left: -2px;
+    }
+}
+
+.left-column-item {
+    width: 80%;
+    h2 {
+        padding-top: 2rem;
+    }
+    p {
+        padding-bottom: 0.5rem;
+    }
+}
+
+
+//*************************
+//      RIGHT             *
+//*************************
+.right-column-item {
+    p {
+        padding-bottom: 0.5rem;
+        &:first-child {
+            font-weight: bold;
+        }
+        &:nth-child(2) {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid $grey;
+        }
+        .date {
+        float: right;
+        }
+    }
 }

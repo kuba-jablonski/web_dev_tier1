@@ -511,6 +511,22 @@ template {
   display: none;
 }
 
+/* line 1, ../sass/partials/_layout.scss */
+.main-wrapper {
+  display: flex;
+  position: relative;
+}
+/* line 4, ../sass/partials/_layout.scss */
+.main-wrapper .left-column {
+  width: 40%;
+  position: relative;
+}
+/* line 8, ../sass/partials/_layout.scss */
+.main-wrapper .right-column {
+  width: 60%;
+  position: relative;
+}
+
 /* line 1, ../sass/partials/_base.scss */
 body {
   font-family: 'Roboto', sans-serif;
@@ -544,8 +560,21 @@ h1 {
 }
 
 /* line 26, ../sass/partials/_base.scss */
+h2 {
+  font-weight: normal;
+  font-size: 2rem;
+  color: #0AA1DA;
+  padding-bottom: 1rem;
+}
+
+/* line 33, ../sass/partials/_base.scss */
 header * {
   color: #F7F7F7;
+}
+
+/* line 37, ../sass/partials/_base.scss */
+main {
+  color: #576268;
 }
 
 /* line 13, ../sass/app.scss */
@@ -615,7 +644,73 @@ img {
 .aboutme {
   padding: 0 4rem;
   background: #576268;
-  color: #F7F7F7;
   padding-top: 2rem;
   padding-bottom: 2rem;
+  color: #F7F7F7;
+}
+
+/* line 83, ../sass/app.scss */
+.left-column {
+  padding: 0 2rem 2rem 4rem;
+  background: #F7F7F7;
+  border-right: 1px dashed black;
+}
+/* line 87, ../sass/app.scss */
+.left-column progress {
+  float: right;
+}
+
+/* line 92, ../sass/app.scss */
+.right-column {
+  padding: 2rem 4rem 2rem 2rem;
+  background: #EEEEEE;
+}
+
+/* line 101, ../sass/app.scss */
+td {
+  position: relative;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-right: 2rem;
+  border-bottom: 1px solid #576268;
+  width: 100%;
+}
+/* line 108, ../sass/app.scss */
+td:first-child {
+  font-weight: bold;
+}
+/* line 111, ../sass/app.scss */
+td:nth-child(2) {
+  left: -2px;
+}
+
+/* line 116, ../sass/app.scss */
+.left-column-item {
+  width: 80%;
+}
+/* line 118, ../sass/app.scss */
+.left-column-item h2 {
+  padding-top: 2rem;
+}
+/* line 121, ../sass/app.scss */
+.left-column-item p {
+  padding-bottom: 0.5rem;
+}
+
+/* line 131, ../sass/app.scss */
+.right-column-item p {
+  padding-bottom: 0.5rem;
+}
+/* line 133, ../sass/app.scss */
+.right-column-item p:first-child {
+  font-weight: bold;
+}
+/* line 136, ../sass/app.scss */
+.right-column-item p:nth-child(2) {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #576268;
+}
+/* line 140, ../sass/app.scss */
+.right-column-item p .date {
+  float: right;
 }
