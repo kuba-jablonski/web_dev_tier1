@@ -492,10 +492,20 @@ main {
   width: 100%; }
   main .details {
     width: 80%;
-    margin: 0 auto; }
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-content: stretch; }
     main .details .left-column {
+      width: 100%;
       display: flex;
       flex-direction: column; }
+    @media screen and (min-width: 900px) {
+      main .details .left-column {
+        width: 45%; }
+      main .details .right-column {
+        width: 45%; } }
 
 .details-item {
   padding-top: 2rem;
@@ -545,19 +555,19 @@ main {
     .hobbies .hobby:nth-of-type(3), .hobbies .hobby:nth-of-type(6) {
       text-align: right; }
 
-.work {
+.work-edu {
   width: 100%;
   position: relative; }
-  .work p .date {
+  .work-edu p .date {
     float: right; }
-  .work p:first-child {
+  .work-edu p:first-child {
     font-weight: bold;
     padding-bottom: 0.25rem; }
-  .work div {
+  .work-edu div {
     border-bottom: 1px solid #576268;
     padding-bottom: 0.5rem;
     margin-top: 1rem; }
-    .work div:first-of-type {
+    .work-edu div:first-of-type {
       margin-top: 0; }
 
 .skills {
@@ -597,5 +607,40 @@ main {
   border-radius: 100%;
   background-color: rgba(87, 98, 104, 0.4);
   background-image: linear-gradient(180deg, transparent 50%, #0187CE 50%), linear-gradient(90deg, #0187CE 50%, transparent 50%); }
+
+footer {
+  width: 100%;
+  margin-top: 2rem;
+  background: #0AA1DA; }
+  footer .social {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    color: #F7F7F7; }
+    footer .social .social-item {
+      text-align: center;
+      margin: 1.5rem 0 1rem 0; }
+      @media screen and (max-width: 550px) {
+        footer .social .social-item p {
+          visibility: hidden; } }
+
+.contact {
+  background: #0187CE;
+  color: #F7F7F7;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  line-height: 1.2rem; }
+  .contact .contact-address {
+    float: left; }
+  .contact .contact-email {
+    float: right; }
+  .contact:after {
+    content: "";
+    display: table;
+    clear: both; }
+  @media screen and (max-width: 720px) {
+    .contact .contact-address, .contact .contact-email {
+      float: none; } }
 
 /*# sourceMappingURL=app.css.map */
