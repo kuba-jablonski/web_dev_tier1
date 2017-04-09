@@ -522,7 +522,8 @@ main {
   flex-flow: row wrap; }
   .software h2 {
     width: 100%; }
-  .software p, .software progress {
+  .software p,
+  .software progress {
     width: 50%;
     margin-bottom: 0.5rem; }
 
@@ -543,5 +544,19 @@ main {
       text-align: center; }
     .hobbies .hobby:nth-of-type(3), .hobbies .hobby:nth-of-type(6) {
       text-align: right; }
+
+.work {
+  width: 100%;
+  position: relative; }
+  .work p .date {
+    float: right; }
+  .work p:first-child {
+    font-weight: bold; }
+  .work div {
+    border-bottom: 1px solid #576268;
+    padding-bottom: 0.5rem;
+    margin-top: 1rem; }
+    .work div:first-of-type {
+      margin-top: 0; }
 
 /*# sourceMappingURL=app.css.map */
