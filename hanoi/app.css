@@ -1,0 +1,70 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.screen {
+  border: 1px solid black;
+  height: 500px;
+  width: 600px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }
+
+.column {
+  height: 90%;
+  width: 150px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center; }
+
+.disk {
+  height: 20px;
+  background-color: blue; }
+
+.nav {
+  margin: .5rem; }
+
+.disk-1 {
+  width: 110px;
+  background-color: red; }
+
+.disk-2 {
+  width: 100px;
+  background-color: orange; }
+
+.disk-3 {
+  width: 90px;
+  background-color: yellow; }
+
+.disk-4 {
+  width: 80px;
+  background-color: green; }
+
+.disk-5 {
+  width: 70px;
+  background-color: blue; }
+
+.disk-6 {
+  width: 60px;
+  background-color: purple; }
+
+.disk-7 {
+  width: 50px;
+  background-color: grey; }
+
+.disk-8 {
+  width: 40px;
+  background-color: black; }
+
+.disk-9 {
+  width: 30px;
+  background-color: violet; }
+
+.disk-10 {
+  width: 20px;
+  background-color: pink; }
+
+/*# sourceMappingURL=app.css.map */

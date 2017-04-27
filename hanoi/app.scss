@@ -1,0 +1,42 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.screen {
+    border: 1px solid black;
+    height: 500px;
+    width: 600px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.column {
+  height: 90%;
+  width: 150px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.disk {
+  height:20px;
+  background-color: blue;
+}
+
+.nav {
+  margin: .5rem;
+}
+
+$colors: red, orange, yellow, green, blue, purple, grey, black, violet, pink;
+
+@for $i from 1 through 10 {
+  .disk-#{$i} {
+    width: 120px - $i * 10;
+    background-color: nth($colors, $i);
+  }
+}
