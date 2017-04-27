@@ -75,33 +75,33 @@ selectBtn.addEventListener('change', () => {
 let source, destination;
 
 
-columns.forEach((column) => {
-    column.addEventListener('click', () => {
-        if (play) {
-            if (!source) {
-                source = column;
-                source.classList.add('active');
-            } else {
-                destination = column;
-            }
+function playGame() {
+    if (!source) {
+        source = this;
+        source.classList.add('active');
+    } else {
+        destination = this;
+    }
 
-            if (source && destination) {
+    if (source && destination) {
 
-                if (isValidMove(source, destination)) {
-                    moveDisk(source, destination);
-                }
-
-                source.classList.remove('active');
-                source = null;
-                destination = null;
-
-                if (isGameOver()) {
-                    status.textContent = 'Victory!!!';
-                    isPlayingAllowed = false;
-                }
-            }
+        if (isValidMove(source, destination)) {
+            moveDisk(source, destination);
         }
-    });
+
+        source.classList.remove('active');
+        source = null;
+        destination = null;
+
+        if (isGameOver()) {
+            status.textContent = 'Victory!!!';
+            isPlayingAllowed = false;
+        }
+    }
+}
+
+columns.forEach((column) => {
+    column.addEventListener('click', playGame);
 });
 
 
