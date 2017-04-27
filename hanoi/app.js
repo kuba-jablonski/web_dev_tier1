@@ -8,10 +8,9 @@ const selectBtn = document.querySelector('.select');
 const status = document.querySelector('.game-status');
 let moveCount = 0;
 let timeouts = [];
-let numOfDisks;
+let numOfDisks, src, dest;
 let isPlayingAllowed = true;
 
-draw();
 
 
 function solveTower(n = numOfDisks, src = leftCol, dest = centerCol, temp = rightCol) {
@@ -21,6 +20,31 @@ function solveTower(n = numOfDisks, src = leftCol, dest = centerCol, temp = righ
         moveDisk(src, dest);
     }, 500 * ++moveCount));
     solveTower(n - 1, temp, dest, src);
+}
+
+function playGame() {
+    if (isPlayingAllowed) {
+        if (!src) {
+            if (this.hasChildNodes()) {
+                src = this;
+                src.classList.add('active');
+            }
+        } else {
+            dest = this;
+        }
+        if (src && dest) {
+            if (isValidMove(src, dest)) {
+                moveDisk(src, dest);
+            }
+            src.classList.remove('active');
+            src = null;
+            dest = null;
+            if (isGameOver()) {
+                status.textContent = 'Victory!!!';
+                isPlayingAllowed = false;
+            }
+        }
+    }
 }
 
 function moveDisk(src, dest) {
@@ -54,74 +78,40 @@ function clear() {
     isPlayingAllowed = true;
 }
 
+function isValidMove(src, dest) {
+    let disk1 = src.querySelector('.disk:last-of-type');
+    let disk2 = dest.querySelector('.disk:last-of-type');
+    let width1, width2;
+    if (disk1) width1 = disk1.offsetWidth;
+    if (disk2) width2 = disk2.offsetWidth;
 
-startBtn.addEventListener('click', () => {
-    isPlayingAllowed = false;
-    draw();
-    solveTower();
-});
-
-resetBtn.addEventListener('click', clear);
-
-selectBtn.addEventListener('change', () => {
-    numOfDisks = this.value;
-    draw();
-});
-
-
-//*******************************
-//    EXPERIMENTAL GAME LOGIC
-//*******************************
-let source, destination;
-
-
-function playGame() {
-    if (!source) {
-        source = this;
-        source.classList.add('active');
-    } else {
-        destination = this;
-    }
-
-    if (source && destination) {
-
-        if (isValidMove(source, destination)) {
-            moveDisk(source, destination);
-        }
-
-        source.classList.remove('active');
-        source = null;
-        destination = null;
-
-        if (isGameOver()) {
-            status.textContent = 'Victory!!!';
-            isPlayingAllowed = false;
-        }
-    }
+    if (!disk1) return false;
+    return !disk2 || (width1 < width2);
 }
+
+function isGameOver() {
+    let disksInCenter = centerCol.querySelectorAll('.disk');
+    return (disksInCenter.length === numOfDisks);
+}
+
+
 
 columns.forEach((column) => {
     column.addEventListener('click', playGame);
 });
 
+startBtn.addEventListener('click', () => {
+    draw();
+    isPlayingAllowed = false;
+    solveTower();
+});
+
+resetBtn.addEventListener('click', draw);
+
+selectBtn.addEventListener('change', () => {
+    if (isPlayingAllowed) draw();
+});
 
 
-function isValidMove(src, dest) {
-    let disk1 = src.querySelector('.disk:last-of-type');
-    let disk2 = dest.querySelector('.disk:last-of-type');
-    let width1, width2;
 
-    if (disk1) width1 = disk1.offsetWidth;
-    if (disk2) width2 = disk2.offsetWidth;
-
-    if (!disk1) return false;
-
-    return !disk2 || (width1 < width2);
-}
-
-
-function isGameOver() {
-    let disksInCenter = centerCol.querySelectorAll('.disk');
-
-    return (disksInCenter.length === numOfDisks);
-}
+draw();
