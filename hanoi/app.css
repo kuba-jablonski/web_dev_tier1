@@ -67,4 +67,7 @@ body {
   width: 20px;
   background-color: pink; }
 
+.active {
+  background-color: #f9f9f9; }
+
 /*# sourceMappingURL=app.css.map */
