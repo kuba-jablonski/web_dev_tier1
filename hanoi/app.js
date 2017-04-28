@@ -8,7 +8,7 @@ const selectBtn = document.querySelector('.select');
 const status = document.querySelector('.game-status');
 let moveCount = 0;
 let timeouts = [];
-let numOfDisks, src, dest;
+let numOfDisks, diskToMove, src, dest;
 let isPlayingAllowed = true;
 
 
@@ -27,6 +27,8 @@ function playGame() {
         if (!src) {
             if (this.hasChildNodes()) {
                 src = this;
+                diskToMove = src.querySelector('.disk:last-of-type');
+                diskToMove.classList.add('floating');
                 src.classList.add('active');
             }
         } else {
@@ -37,6 +39,7 @@ function playGame() {
                 moveDisk(src, dest);
             }
             src.classList.remove('active');
+            diskToMove.classList.remove('floating');
             src = null;
             dest = null;
             if (isGameOver()) {
