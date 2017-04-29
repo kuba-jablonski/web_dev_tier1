@@ -5,7 +5,6 @@ const rightCol = document.querySelector('.column3');
 const startBtn = document.querySelector('.start');
 const resetBtn = document.querySelector('.reset');
 const selectBtn = document.querySelector('.select');
-const status = document.querySelector('.game-status');
 let moveCount = 0;
 let timeouts = [];
 let numOfDisks, diskToMove, src, dest;
@@ -69,7 +68,6 @@ function clear() {
         column.classList.remove('active');
     })
     centerCol.classList.remove('game-won');
-    status.innerHTML = '';
     moveCount = 0;
     timeouts.forEach((timeout) => {
         clearTimeout(timeout);
@@ -79,8 +77,8 @@ function clear() {
 }
 
 function isValidMove(src, dest) {
-    let disk1 = src.querySelector('.disk:last-of-type');
-    let disk2 = dest.querySelector('.disk:last-of-type');
+    const disk1 = src.querySelector('.disk:last-of-type');
+    const disk2 = dest.querySelector('.disk:last-of-type');
     let width1, width2;
     if (disk1) width1 = disk1.offsetWidth;
     if (disk2) width2 = disk2.offsetWidth;
@@ -90,7 +88,7 @@ function isValidMove(src, dest) {
 }
 
 function isGameOver() {
-    let disksInCenter = centerCol.querySelectorAll('.disk');
+    const disksInCenter = centerCol.querySelectorAll('.disk');
     if (disksInCenter.length === numOfDisks) {
         centerCol.classList.add('game-won');
         isPlayingAllowed = false;
