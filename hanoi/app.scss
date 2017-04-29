@@ -13,10 +13,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 1.5rem;
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 1px;
+  font-size: 1.6rem;
   color: $pastel-white;
   font-weight: bold;
   background-color: $pastel-white;
+  user-select: none;
 }
 
 .screen {
@@ -39,10 +42,14 @@ body {
   align-items: center;
 }
 
+.column2 {
+  transition: 0.5s linear;
+}
+
 .disk {
-  height:20px;
+  height: 22px;
   border-radius: 10px;
-  transition: 500 linear;
+  transition: .05s linear;
 }
 
 nav {
@@ -51,16 +58,15 @@ nav {
   justify-content: space-around;
   width: 100%;
   max-width: 700px;
-  height: 20%;
+  height: 30%;
 }
 
-nav div {
-  width: 100px;
+.button {
   display: flex;
   width: 45%;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   max-width: 180px;
   height: 4rem;
   cursor: pointer;
@@ -70,45 +76,6 @@ nav div {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   }
 }
-
-button{
-  position: relative;
-  overflow: hidden;
-}
-
-button:after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 5px;
-  height: 5px;
-  background: rgba(255, 255, 255, .5);
-  opacity: 0;
-  border-radius: 100%;
-  transform: scale(1, 1) translate(-50%);
-  transform-origin: 50% 50%;
-}
-
-@keyframes ripple {
-  0% {
-    transform: scale(0, 0);
-    opacity: 1;
-  }
-  20% {
-    transform: scale(25, 25);
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    transform: scale(40, 40);
-  }
-}
-
-button:focus:not(:active)::after {
-  animation: ripple 1s ease-out;
-}
-
 
 .start {
   background-color: $pastel-green;
@@ -123,14 +90,35 @@ button:focus:not(:active)::after {
 }
 
 .select {
+  font-size: 1rem;
   margin-left: 1rem;
-  width: 35px;
-  height: 25px;
+  width: 40px;
+  height: 30px;
+  padding-left: 5px;
+  color: $pastel-white;
+  background-color: $pastel-lightblue;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='#F9F8F6'><polygon points='0,0 100,0 50,50'/></svg>") no-repeat;
+  background-size: 10px;
+  background-position: 20px 12px;
+  background-repeat: no-repeat;
+  border: 1px solid $pastel-white;
+  &:active, &:focus {
+    outline: none;
+  }
+  option {
+    background-color: $pastel-lightblue;
+    border: 1px solid white;;
+    width: 40px;
+    height: 30px;
+  }
 }
 
-$colors: red, orange, yellow, green, blue, purple, grey, black, violet, pink;
+$colors: #913CCD, #5481E6, #98CB4A, #F15F74, #F76D3C, #F7D842, #2CA8C2, #839098;
 
-@for $i from 1 through 10 {
+@for $i from 1 through 8 {
   .disk-#{$i} {
     width: 90% - $i * 9%;
     background-color: nth($colors, $i);
@@ -143,4 +131,10 @@ $colors: red, orange, yellow, green, blue, purple, grey, black, violet, pink;
 
 .floating {
   margin-bottom: 20px;
+}
+
+.game-won {
+  border: 1px solid $pastel-green;
+  border-bottom: 5px solid $pastel-green;
+  box-shadow: 0px 0px 19px 3px rgba(126,224,129,1);
 }

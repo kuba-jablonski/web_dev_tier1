@@ -5,6 +5,7 @@
     <title>Tower of Hanoi</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet">
     <link href="app.css" rel="stylesheet">
 </head>
 
@@ -17,10 +18,10 @@
         <div class="column column3"></div>
 
         <nav>
-            <div class="start">Solve</div>
-            <div class="reset">Reset</div>
-            <div class="select-container">
-                Disks:  
+            <div class="button start">Solve</div>
+            <div class="button reset">Reset</div>
+            <div class="button select-container">
+                <div class="disk-label">Disks:</div>
                 <select class="select">
                     <option value="3">3</option>
                     <option value="4">4</option>
@@ -34,11 +35,6 @@
         </nav>
 
     </div>
-
-    <h1 class="game-status"></h1>
-
-
-
 
     <script src="app.js"></script>
 </body>

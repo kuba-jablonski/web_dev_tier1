@@ -12,7 +12,6 @@ let numOfDisks, diskToMove, src, dest;
 let isPlayingAllowed = true;
 
 
-
 function solveTower(n = numOfDisks, src = leftCol, dest = centerCol, temp = rightCol) {
     if (n === 0) return;
     solveTower(n - 1, src, temp, dest);
@@ -42,10 +41,7 @@ function playGame() {
             diskToMove.classList.remove('floating');
             src = null;
             dest = null;
-            if (isGameOver()) {
-                status.textContent = 'Victory!!!';
-                isPlayingAllowed = false;
-            }
+            isGameOver();
         }
     }
 }
@@ -72,9 +68,10 @@ function clear() {
         column.innerHTML = '';
         column.classList.remove('active');
     })
+    centerCol.classList.remove('game-won');
     status.innerHTML = '';
     moveCount = 0;
-    timeouts.map((timeout) => {
+    timeouts.forEach((timeout) => {
         clearTimeout(timeout);
     });
     timeouts = [];
@@ -94,10 +91,11 @@ function isValidMove(src, dest) {
 
 function isGameOver() {
     let disksInCenter = centerCol.querySelectorAll('.disk');
-    return (disksInCenter.length === numOfDisks);
+    if (disksInCenter.length === numOfDisks) {
+        centerCol.classList.add('game-won');
+        isPlayingAllowed = false;
+    }
 }
-
-
 
 columns.forEach((column) => {
     column.addEventListener('click', playGame);
